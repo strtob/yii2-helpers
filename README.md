@@ -1,2 +1,2 @@
 # yii2-helpers
-Yii2 helper classes
+yii2-helpers is a collection of helper classes which can save time and are easy to use
