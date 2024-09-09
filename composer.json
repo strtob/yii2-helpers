@@ -1,0 +1,10 @@
+ {
+    "name": "strtob/yii2-helpers",
+    "description": "A Yii2 helpers package",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Strtob\\Helpers\\": "src/"
+        }
+    }
+}
