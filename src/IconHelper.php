@@ -58,6 +58,7 @@ class IconHelper
         // 
         // ___F___
         'further' => 'fa-solid fa-sliders',
+        'file' => 'fa-solid fa-file',
         // 
         // ___G___
         'group' => 'fa-solid fa-user-group',
@@ -78,8 +79,9 @@ class IconHelper
         // ___M___
         'meta' => 'fa-solid fa-user',
         'management' => 'fa-solid fa-user-tie',
+        'mandate' => 'fa-solid fa-users',
         //
-        // __P__
+        // ____
         'payment' => 'fa-regular fa-credit-card',
         'person' => 'fa-solid fa-person',
         //
@@ -96,6 +98,7 @@ class IconHelper
         // 
         // ___S___
         'status' => 'fa-solid fa-list-check',
+        'setting' => 'fa-solid fa-cog',
         // 
         // ___T___
         'type' => 'fa-solid fa-gear',
