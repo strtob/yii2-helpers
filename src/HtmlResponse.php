@@ -22,7 +22,7 @@ class HtmlResponse
      * @param array|null $additionData Additional data to include in the response, merged into the response array if provided.
      * @return array The structured success response.
      */
-    public static function messageSuccess($title = null, $message = null, $redirectUrl = null, array $additionData = null)
+    public static function messageSuccess($title = null, $message = null, $redirectUrl = null, $redirectTarget = null, array $additionData = null)
     {
         // Default title if none provided
         if (is_null($title)) {
@@ -40,7 +40,8 @@ class HtmlResponse
                 'success' => true,
                 'title' => \yii::t('app', $title),
                 'message' => \yii::t('app', $message),
-                'redirectUrl' => $redirectUrl,
+                'redirectUrl' => $redirectUrl,   
+                'redirectTarget' => $redirectTarget,             
             ],
         ];
 
