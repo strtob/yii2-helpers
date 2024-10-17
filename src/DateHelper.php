@@ -81,15 +81,19 @@ class DateHelper
      * @param string|null $date The date to check (in 'Y-m-d' format).
      * @return bool True if the date is over today, false otherwise.
      */
-    public static function isDateOverToday(?string $date): bool
+        public static function isDateOverToday(?string $date): bool
     {
         if ($date === null) {
             return false; // Handle this case based on your specific requirements
         }
 
-        $today     = new \DateTime();
-        $givenDate = \DateTime::createFromFormat('Y-m-d', $date);
+        // Create DateTime object for today's date, setting time to midnight (00:00:00)
+        $today = new \DateTime('today');
 
+        // Try to create a DateTime object from the given date string
+        $givenDate = \DateTime::createFromFormat('Y-m-d H:i:s', $date) ?: \DateTime::createFromFormat('Y-m-d', $date);
+
+        // Check if the given date is valid and is before today
         return $givenDate !== false && $givenDate < $today;
     }
 
