@@ -22,6 +22,7 @@ class IconHelper
         'assignment' => 'fa-solid fa-arrow-right-arrow-left',
         'agreement' => 'fa-solid fa-file-signature',
         'approval' => 'fa-solid fa-file-signature',
+        'attendee' => 'fa-solid fa-users-line',
         // 
         // ___B___
         'borrower' => 'fa-solid fa-user',
@@ -36,6 +37,7 @@ class IconHelper
         'contract' => 'fa-solid fa-file-contract',
         'comment' => 'fa-regular fa-comments',
         'comission' => 'fa-solid fa-money-bill',
+        'costcenter' => 'fa-solid fa-industry',
         // 
         // ___D___
         'download' => 'fa-solid fa-download',
@@ -44,6 +46,7 @@ class IconHelper
         'dashboard' => 'fa-solid fa-dashboard',
         'daterange' => 'fa-solid fa-clock-rotate-left',
         'document' => 'fa-regular fa-file-lines',
+        'department' => 'fa-solid fa-users',
         // 
         // ___E___
         'essentials' => 'fa-solid fa-bars',
@@ -81,9 +84,12 @@ class IconHelper
         'management' => 'fa-solid fa-user-tie',
         'mandate' => 'fa-solid fa-users',
         //
-        // ____
+        // ___N___
         'payment' => 'fa-regular fa-credit-card',
         'person' => 'fa-solid fa-person',
+        'profitcenter' => 'fas fa-cash-register',
+        // ___N___
+        'query' => 'fa-solid fa-database',
         //
         // __R__
         'research' => 'fa-solid fa-chart-column',
@@ -105,11 +111,16 @@ class IconHelper
         'task' => 'fa-solid fa-list-check',
         'timeline' => 'fa-solid fa-timeline',
         'tax' => 'fa-solid fa-building-columns',
+        'tracking' => 'fas fa-pencil-alt',
         // 
         // ___I___
         'investmentoffer' => 'fas fa-mail-bulk',
         'number' => 'fa-solid fa-phone',
         'website' => 'fa-regular fa-window-maximize',
+         // 
+        // ___U___
+        'user' => 'fas fa-user',
+        
     ];
     private static $default = 'fa-solid fa-book';
 
