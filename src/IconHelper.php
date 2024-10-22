@@ -47,6 +47,7 @@ class IconHelper
         'daterange' => 'fa-solid fa-clock-rotate-left',
         'document' => 'fa-regular fa-file-lines',
         'department' => 'fa-solid fa-users',
+        'database' => 'fa-solid fa-database',
         // 
         // ___E___
         'essentials' => 'fa-solid fa-bars',
@@ -58,6 +59,8 @@ class IconHelper
         'escalationclause' => 'fa-solid fa-chart-line',
         'entity' => 'fa-solid fa-city',
         'externaluser' => 'fa-solid fa-user-shield',
+        'export' => 'fa-solid fa-file-export',
+        'excelexport' => 'fa-regular fa-file-excel',
         // 
         // ___F___
         'further' => 'fa-solid fa-sliders',
@@ -78,11 +81,13 @@ class IconHelper
         'list' => 'fa-solid fa-list',
         'linktable' => 'fa-solid fa-link',
         'link' => 'fa-solid fa-link',
+        'log' => 'fa-solid fa-table-list',
         //        
         // ___M___
         'meta' => 'fa-solid fa-user',
         'management' => 'fa-solid fa-user-tie',
         'mandate' => 'fa-solid fa-users',
+        'module' => 'fa-solid fa-puzzle-piece',
         //
         // ___N___
         'payment' => 'fa-regular fa-credit-card',
@@ -105,6 +110,7 @@ class IconHelper
         // ___S___
         'status' => 'fa-solid fa-list-check',
         'setting' => 'fa-solid fa-cog',
+        'server' => 'fa-solid fa-server',
         // 
         // ___T___
         'type' => 'fa-solid fa-gear',
@@ -116,8 +122,14 @@ class IconHelper
         // ___I___
         'investmentoffer' => 'fas fa-mail-bulk',
         'number' => 'fa-solid fa-phone',
+        'import' => 'fa-solid fa-file-import',
+        // 
+        //
+        // ___W___       
         'website' => 'fa-regular fa-window-maximize',
-         // 
+
+        //
+        //
         // ___U___
         'user' => 'fas fa-user',
         
