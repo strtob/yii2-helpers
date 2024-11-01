@@ -9,6 +9,8 @@ namespace strtob\yii2helpers;
 
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
+use yii\helpers\ArrayHelper;
+use yii\db\ActiveRecord;
 
 /**
  * Description of ArHelper
@@ -28,11 +30,8 @@ class ArrayHelper
 
     namespace app\helpers;
 
-use yii\helpers\ArrayHelper;
-use yii\db\ActiveRecord;
 
-class NestedArrayHelper
-{
+
     /**
      * Returns a nested array based on a model's parent-child relationships.
      *
@@ -82,4 +81,3 @@ class NestedArrayHelper
 }
 
 
-}
