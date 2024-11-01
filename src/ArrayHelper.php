@@ -59,7 +59,7 @@ class ArrayHelper
         foreach ($data as $item) {
             $dataById[$item[$idField]] = [
                 'id' => $item[$idField],
-                'label' => "<i class=\"$iconClass\"></i> " . $item[$labelField],
+                'label' => $item[$labelField],
                 'parent_id' => $item[$parentField],
                 'items' => []  // Initialize children
             ];
