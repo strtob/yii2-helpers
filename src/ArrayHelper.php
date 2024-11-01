@@ -75,6 +75,25 @@ class ArrayHelper
         // Return only the top-level items, each with nested `children`
         return array_values($nestedArray);
     }
+
+    /**
+     * Helper function to index an array by a specific key.
+     *
+     * @param array $array The input array.
+     * @param string $key The key to index by.
+     * @return array The array indexed by the specified key.
+     */
+    private static function indexBy(array $array, string $key): array
+    {
+        $result = [];
+        foreach ($array as $element) {
+            if (isset($element[$key])) {
+                $result[$element[$key]] = $element;
+            }
+        }
+        return $result;
+    }
+    
 }
 
 
