@@ -28,10 +28,6 @@ class ArrayHelper
         return implode('$sep', $result);
     }
 
-    namespace app\helpers;
-
-
-
     /**
      * Returns a nested array based on a model's parent-child relationships.
      *
