@@ -28,72 +28,80 @@ class ArrayHelper
     }
 
     /**
-     * Returns a nested array based on a model's parent-child relationships.
+     * Returns a nested array structure with customized `id`, `label`, and `items` fields.
      *
      * @param string $modelClass The ActiveRecord model class name.
-     * @param string $idField The name of the ID field (default 'id').
-     * @param string $nameField The name of the name field (default 'name').
-     * @param string $parentField The name of the parent ID field (default 'parent_id').
+     * @param string $idField The name of the ID field.
+     * @param string $labelField The name of the label field (for display).
+     * @param string $parentField The name of the parent ID field.
+     * @param string $iconClass The icon class to be used in the label.
      * @param array $conditions Additional conditions for filtering (optional).
      * @return array
      */
     public static function getNestedArray(
         string $modelClass,
         string $idField = 'id',
+        string $labelField = 'name',
         string $parentField = 'parent_id',
+        string $iconClass = 'fa fa-star',
         array $conditions = []
     ): array {
-        // Validate that the model class is an ActiveRecord
+        // Ensure the model class is a valid ActiveRecord class
         if (!is_subclass_of($modelClass, ActiveRecord::class)) {
             throw new \InvalidArgumentException("The class $modelClass must be an instance of ActiveRecord.");
         }
 
-        // Step 1: Retrieve all records from the model, applying any additional conditions
-        $data = $modelClass::find()->where($conditions)->asArray()->all();
+        // Fetch data with conditions and limit fields to id, label, and parent
+        $data = $modelClass::find()->select([$idField, $labelField, $parentField])->where($conditions)->asArray()->all();
 
-        // Step 2: Create a lookup array by ID
-        $dataById = ArrayHelper::index($data, $idField);
+        // Index data by ID for easy referencing
+        $dataById = [];
+        foreach ($data as $item) {
+            $dataById[$item[$idField]] = [
+                'id' => $item[$idField],
+                'label' => "<i class=\"$iconClass\"></i> " . $item[$labelField],
+                'parent_id' => $item[$parentField],
+                'items' => []  // Initialize children
+            ];
+        }
 
         // Step 3: Build the nested structure
         $nestedArray = [];
-        foreach ($data as $item) {
-            $itemId = $item[$idField];
-            $parentId = $item[$parentField];
-
+        foreach ($dataById as &$item) {
+            $parentId = $item['parent_id'];
             if ($parentId === null) {
                 // Top-level item (no parent)
-                $nestedArray[] = &$dataById[$itemId];
+                $nestedArray[] = &$item;
             } else {
                 // Nested item (has a parent)
-                if (!isset($dataById[$parentId]['children'])) {
-                    $dataById[$parentId]['children'] = [];
+                if (isset($dataById[$parentId])) {
+                    $dataById[$parentId]['items'][] = &$item;
                 }
-                $dataById[$parentId]['children'][] = &$dataById[$itemId];
             }
         }
 
-        // Return only the top-level items, each with nested `children`
-        return array_values($nestedArray);
+        // Step 4: Remove `parent_id` from each item in the nested structure
+        self::removeParentId($nestedArray);
+
+        return $nestedArray;
     }
 
     /**
-     * Helper function to index an array by a specific key.
+     * Recursively removes the `parent_id` field from each item in the array.
      *
-     * @param array $array The input array.
-     * @param string $key The key to index by.
-     * @return array The array indexed by the specified key.
+     * @param array &$array The array to process.
      */
-    private static function indexBy(array $array, string $key): array
+    private static function removeParentId(array &$array)
     {
-        $result = [];
-        foreach ($array as $element) {
-            if (isset($element[$key])) {
-                $result[$element[$key]] = $element;
+        foreach ($array as &$item) {
+            if (is_array($item)) {
+                unset($item['parent_id']);
+                if (isset($item['items']) && is_array($item['items'])) {
+                    self::removeParentId($item['items']);
+                }
             }
         }
-        return $result;
     }
-    
 }
 
 
