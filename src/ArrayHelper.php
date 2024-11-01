@@ -9,7 +9,6 @@ namespace strtob\yii2helpers;
 
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
-use yii\helpers\ArrayHelper;
 use yii\db\ActiveRecord;
 
 /**
@@ -54,7 +53,7 @@ class ArrayHelper
         $data = $modelClass::find()->where($conditions)->asArray()->all();
 
         // Step 2: Create a lookup array by ID
-        $dataById = ArrayHelper::index($data, $idField);
+        $dataById = \yii\helpers\ArrayHelper::index($data, $idField);
 
         // Step 3: Build the nested structure
         $nestedArray = [];
