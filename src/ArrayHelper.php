@@ -40,7 +40,6 @@ class ArrayHelper
     public static function getNestedArray(
         string $modelClass,
         string $idField = 'id',
-        string $nameField = 'name',
         string $parentField = 'parent_id',
         array $conditions = []
     ): array {
@@ -53,24 +52,27 @@ class ArrayHelper
         $data = $modelClass::find()->where($conditions)->asArray()->all();
 
         // Step 2: Create a lookup array by ID
-        $dataById = \yii\helpers\ArrayHelper::index($data, $idField);
+        $dataById = ArrayHelper::index($data, $idField);
 
         // Step 3: Build the nested structure
         $nestedArray = [];
-        foreach ($data as &$item) {
-            if ($item[$parentField] === null) {
+        foreach ($data as $item) {
+            $itemId = $item[$idField];
+            $parentId = $item[$parentField];
+
+            if ($parentId === null) {
                 // Top-level item (no parent)
-                $nestedArray[] = &$dataById[$item[$idField]];
+                $nestedArray[] = &$dataById[$itemId];
             } else {
                 // Nested item (has a parent)
-                if (!isset($dataById[$item[$parentField]]['children'])) {
-                    $dataById[$item[$parentField]]['children'] = [];
+                if (!isset($dataById[$parentId]['children'])) {
+                    $dataById[$parentId]['children'] = [];
                 }
-                $dataById[$item[$parentField]]['children'][] = &$dataById[$item[$idField]];
+                $dataById[$parentId]['children'][] = &$dataById[$itemId];
             }
         }
 
-        // Return only the top-level items, now with nested children
+        // Return only the top-level items, each with nested `children`
         return array_values($nestedArray);
     }
 }
