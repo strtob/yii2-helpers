@@ -38,6 +38,8 @@ class IconHelper
         'comment' => 'fa-regular fa-comments',
         'comission' => 'fa-solid fa-money-bill',
         'costcenter' => 'fa-solid fa-industry',
+        'costrate' => 'fa-solid fa-sack-dollar',
+
         // 
         // ___D___
         'download' => 'fa-solid fa-download',
@@ -48,6 +50,7 @@ class IconHelper
         'document' => 'fa-regular fa-file-lines',
         'department' => 'fa-solid fa-users',
         'database' => 'fa-solid fa-database',
+        'department' => 'fas fa-users',
         // 
         // ___E___
         'essentials' => 'fa-solid fa-bars',
@@ -127,6 +130,7 @@ class IconHelper
         //
         // ___W___       
         'website' => 'fa-regular fa-window-maximize',
+        'workingtime' => 'fas fa-clock',
 
         //
         //
